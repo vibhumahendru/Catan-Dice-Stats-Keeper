@@ -62,6 +62,19 @@ class App extends Component {
   }
 
   handleSetPlayers=(players)=>{
+    this.eachRollCount = {
+      2:0,
+      3:0,
+      4:0,
+      5:0,
+      6:0,
+      7:0,
+      8:0,
+      9:0,
+      10:0,
+      11:0,
+      12:0
+    }
     this.setState({
       rolls: [],
       players:players
@@ -97,9 +110,9 @@ class App extends Component {
         <div className="right-box">
           {this.state.players ? <h2>{this.state.currentPlayer} rolled </h2>: null}
           <div className="num-display">{this.state.rolls[this.state.rolls.length -1]}</div>
-          {this.state.players ? <button onClick={()=>this.handleRoll()}>Next Roll: {this.state.nextPlayer} </button> : null}
-          {!this.state.players ? <PlayerFill handleSetPlayers={this.handleSetPlayers}/> :null}
-          {!this.state.players ? <button onClick={this.handleTest}>Test Dice Probability: 1000 rolls</button> :null}
+          {this.state.players ? <button type="button" class="btn btn-primary" onClick={()=>this.handleRoll()}>Next Roll: {this.state.nextPlayer} </button> : null}
+          {!this.state.players ? <PlayerFill handleSetPlayers={this.handleSetPlayers}/> :null}<br></br>
+          {!this.state.players ? <button type="button" class="btn btn-info" onClick={this.handleTest}>Test Dice Probability: 1000 rolls</button> :null}
         </div>
         <div className="left-box">
         <ColumnChart id="users-chart" width="600px" height="300px" data={this.eachRollCount} />
@@ -107,7 +120,7 @@ class App extends Component {
           <div className="last-rolls">
             <h3>Last Three Rolls</h3>
               <div className="last-three">
-                <div className="lastRoll">Last Roll<h1>{this.state.rolls[this.state.rolls.length -2]}</h1></div>
+                {this.state.rolls.length>1 ? <div className="lastRoll">Last Roll<h1>{this.state.rolls[this.state.rolls.length -2]}</h1></div> : null}
                 <div className="lastRoll"><h1>{this.state.rolls[this.state.rolls.length -3]}</h1></div>
                 <div className="lastRoll"><h1>{this.state.rolls[this.state.rolls.length -4]}</h1></div>
               </div>

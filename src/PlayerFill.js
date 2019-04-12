@@ -50,12 +50,12 @@ class PlayerFill extends Component {
       <div>
         <h2>Player Names + Roll Order</h2>
           <div>
-            <input id="player1" onChange={(event)=>this.handleChange(event)} placeholder="player 1"></input>
-            <input id="player2" onChange={(event)=>this.handleChange(event)} placeholder="player 2"></input>
-            <input id="player3" onChange={(event)=>this.handleChange(event)} placeholder="player 3"></input>
-            <input id="player4" onChange={(event)=>this.handleChange(event)} placeholder="player 4"></input>
+            <input id="player1" onChange={(event)=>this.handleChange(event)} placeholder="player 1"></input><br></br>
+            <input id="player2" onChange={(event)=>this.handleChange(event)} placeholder="player 2"></input><br></br>
+            <input id="player3" onChange={(event)=>this.handleChange(event)} placeholder="player 3"></input><br></br>
+            <input id="player4" onChange={(event)=>this.handleChange(event)} placeholder="player 4"></input><br></br><br></br>
           </div>
-          <button onClick={this.handleLog}>Finalise Player Order</button>
+          <button type="button" class="btn btn-success" onClick={this.handleLog}>Finalise Player Order</button>
       </div>
     );
   }
