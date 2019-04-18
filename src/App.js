@@ -107,22 +107,26 @@ class App extends Component {
     console.log(this.state.rolls.length);
     return (
       <div className="App">
+
         <div className="right-box">
           {this.state.players ? <h2>{this.state.currentPlayer} rolled </h2>: null}
           <div className="num-display">{this.state.rolls[this.state.rolls.length -1]}</div>
           {this.state.players ? <button type="button" class="btn btn-primary" onClick={()=>this.handleRoll()}>Next Roll: {this.state.nextPlayer} </button> : null}
           {!this.state.players ? <PlayerFill handleSetPlayers={this.handleSetPlayers}/> :null}<br></br>
           {!this.state.players ? <button type="button" class="btn btn-info" onClick={this.handleTest}>Test Dice Probability: 1000 rolls</button> :null}
+          <div>
+          </div>
         </div>
+
         <div className="left-box">
         <ColumnChart id="users-chart" width="600px" height="300px" data={this.eachRollCount} />
         <h4>Total Rolls: {this.state.rolls.length}</h4>
           <div className="last-rolls">
             <h3>Last Three Rolls</h3>
               <div className="last-three">
-                {this.state.rolls.length>1 ? <div className="lastRoll">Last Roll<h1>{this.state.rolls[this.state.rolls.length -2]}</h1></div> : null}
-                <div className="lastRoll"><h1>{this.state.rolls[this.state.rolls.length -3]}</h1></div>
-                <div className="lastRoll"><h1>{this.state.rolls[this.state.rolls.length -4]}</h1></div>
+                <div className="lastRoll"><h1>{this.state.rolls[this.state.rolls.length -2]}</h1></div>
+                <div className="lastRoll"><h4>{this.state.rolls[this.state.rolls.length -3]}</h4></div>
+                <div className="lastRoll"><h6>{this.state.rolls[this.state.rolls.length -4]}</h6></div>
               </div>
             </div>
         </div>

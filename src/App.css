@@ -1,10 +1,11 @@
 .App {
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row-reverse;
   /* border: solid; */
-  height: 100vh
+  height: 100vh;
+  min-width: 1000px;
 }
 
 .App-logo {
@@ -15,12 +16,17 @@
 
 .right-box{
   border: solid;
-  height: 50%;
+  min-height: 375px;
+  min-width: 100px;
+  height: 50vh;
   width: 20%;
   margin: 2%;
 }
 .left-box{
   border: solid;
+  position:  static;
+  min-height: 500px;
+  min-width: 750px;
   padding: 2%;
   height: 85%;
   margin:2%;
@@ -28,6 +34,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 
 .last-rolls{
   border: solid;
@@ -50,7 +57,7 @@
 } */
 
 .num-display{
-  font-size: 200px;
+  font-size:1000%;
 }
 
 .App-header {
