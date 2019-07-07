@@ -4,8 +4,15 @@ import './App.css';
 import ReactChartkick, { LineChart, PieChart, ColumnChart } from 'react-chartkick'
 import Chart from 'chart.js'
 import PlayerFill from './PlayerFill.js'
+import soundFile from './assets/sound1.m4a'
+
 
 class App extends Component {
+
+  constructor(){
+    super()
+    this.sound1 = new Audio(soundFile)
+  }
 
   state = {
     rolls:[],
@@ -37,7 +44,7 @@ class App extends Component {
     if (this.count ==this.state.players.length -1) {
       this.nextCount = 0
     }
-    console.log(this.state.players[this.count]);
+
     this.setState({
       currentPlayer: this.state.players[this.count],
       nextPlayer: this.state.players[this.nextCount]
@@ -46,15 +53,25 @@ class App extends Component {
     this.nextCount +=1
   }
 
+  // playSound=(rollNum)=>{
+  //   console.log(rollNum);
+  //   let soundObj ={
+  //     7:this.sound1
+  //   }
+  //   return soundObj[rollNum].play()
+  // }
+
 
   handleRoll=()=>{
+    console.log("test sound");
     let rollOne = Math.floor(Math.random() * 6) + 1;
     let rollTwo = Math.floor(Math.random() * 6) + 1;
     let rollAr = this.state.rolls
     let combineRoll = rollOne + rollTwo
+    console.log(combineRoll);
     this.eachRollCount[combineRoll]+=1
     rollAr.push(combineRoll)
-
+    // this.playSound(combineRoll)
     this.setState({
       rolls: rollAr
     })
@@ -104,7 +121,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.rolls.length);
     return (
       <div className="App">
 

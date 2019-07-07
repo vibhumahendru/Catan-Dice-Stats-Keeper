@@ -41,7 +41,7 @@ class PlayerFill extends Component {
         playerAr.push(this.state[key])
       }
     }
-    console.log(playerAr);
+    
     this.props.handleSetPlayers(playerAr)
   }
 
