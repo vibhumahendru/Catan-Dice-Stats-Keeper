@@ -4,21 +4,43 @@ import './App.css';
 import ReactChartkick, { LineChart, PieChart, ColumnChart } from 'react-chartkick'
 import Chart from 'chart.js'
 import PlayerFill from './PlayerFill.js'
-import soundFile from './assets/sound1.m4a'
+
+import sound2 from './assets/sound2.m4a'
+import sound3 from './assets/sound3.m4a'
+import sound4 from './assets/sound4.m4a'
+import sound5 from './assets/sound5.m4a'
+import sound6 from './assets/sound6.m4a'
+import sound7 from './assets/sound7.m4a'
+import sound8 from './assets/sound8.m4a'
+import sound9 from './assets/sound9.m4a'
+import sound10 from './assets/sound10.m4a'
+import sound11 from './assets/sound11.m4a'
+import sound12 from './assets/sound12.m4a'
 
 
 class App extends Component {
 
   constructor(){
     super()
-    this.sound1 = new Audio(soundFile)
+    this.sound7 = new Audio(sound7)
+    this.sound2 = new Audio(sound2)
+    this.sound3 = new Audio(sound3)
+    this.sound4 = new Audio(sound4)
+    this.sound5 = new Audio(sound5)
+    this.sound6 = new Audio(sound6)
+    this.sound8 = new Audio(sound8)
+    this.sound9 = new Audio(sound9)
+    this.sound10 = new Audio(sound10)
+    this.sound11 = new Audio(sound11)
+    this.sound12 = new Audio(sound12)
   }
 
   state = {
     rolls:[],
     players: null,
     currentPlayer: null,
-    nextPlayer: null
+    nextPlayer: null,
+    muted: false
   }
 
   count = 0
@@ -53,25 +75,34 @@ class App extends Component {
     this.nextCount +=1
   }
 
-  // playSound=(rollNum)=>{
-  //   console.log(rollNum);
-  //   let soundObj ={
-  //     7:this.sound1
-  //   }
-  //   return soundObj[rollNum].play()
-  // }
+  playSound=(rollNum)=>{
+    let soundObj ={
+      7:this.sound7,
+      2:this.sound2,
+      3:this.sound3,
+      4:this.sound4,
+      5:this.sound5,
+      6:this.sound6,
+      8:this.sound8,
+      9:this.sound9,
+      10:this.sound10,
+      11:this.sound11,
+      12:this.sound12,
+    }
+    return soundObj[rollNum].play()
+  }
 
 
   handleRoll=()=>{
-    console.log("test sound");
     let rollOne = Math.floor(Math.random() * 6) + 1;
     let rollTwo = Math.floor(Math.random() * 6) + 1;
     let rollAr = this.state.rolls
     let combineRoll = rollOne + rollTwo
-    console.log(combineRoll);
     this.eachRollCount[combineRoll]+=1
     rollAr.push(combineRoll)
-    // this.playSound(combineRoll)
+    if (!this.state.muted) {
+      this.playSound(combineRoll)
+    }
     this.setState({
       rolls: rollAr
     })
@@ -114,10 +145,12 @@ class App extends Component {
       })
       counter +=1
     }
+  }
 
-
-
-
+  handleMute=()=>{
+    this.setState({
+      muted: !this.state.muted
+    })
   }
 
   render() {
@@ -131,6 +164,10 @@ class App extends Component {
           {!this.state.players ? <PlayerFill handleSetPlayers={this.handleSetPlayers}/> :null}<br></br>
           {!this.state.players ? <button type="button" class="btn btn-info" onClick={this.handleTest}>Test Dice Probability: 1000 rolls</button> :null}
           <div>
+          <div id="mute-btn">
+          {this.state.muted?<button type="button" class="btn btn-warning" onClick={this.handleMute}>un-Mute</button>:<button type="button" class="btn btn-warning" onClick={this.handleMute}>Mute</button>}
+
+          </div>
           </div>
         </div>
 

@@ -71,6 +71,10 @@
   color: white;
 }
 
+#mute-btn{
+  margin-top: 10px;
+}
+
 .App-link {
   color: #61dafb;
 }
